@@ -11,15 +11,18 @@ public class Vertex {
         this.edges = new ArrayList<Edge>();
     }
 
-    //takes in end vertex and weight
+    //add an edge to a vertex: takes in end vertex and weight
     public void addEdge(Vertex endVertex, Integer weight) {
-        this.edges.add(new Edge(this, endVertex, weight));
+        this.edges.add(new Edge(this, endVertex, weight));//this calls the vertex object
     }
 
+    //removes an edge(connection between two vertexes): called on a vertex object(start),takes in end vertex
     public void removeEdge(Vertex endVertex) {
+        //removes if the end of the given vertex equals the parameter
         this.edges.removeIf(edge -> edge.getEnd().equals(endVertex));
     }
 
+    //returns an instances of edges ArrayList
     public ArrayList<Edge> getEdges(){
         return this.edges;
     }
