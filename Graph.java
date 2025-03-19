@@ -5,6 +5,7 @@ public class Graph {
     private ArrayList<Vertex> vertices;
     private boolean isWeighted;
     private boolean isDirected;//pointing one way
+    private Vertex[] visited;//fix this later
 
     //constructor
     public Graph(boolean inputIsWeighted, boolean inputIsDirected) {
