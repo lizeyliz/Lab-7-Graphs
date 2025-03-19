@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Graph {
     //instance variables
     private ArrayList<Vertex> vertices;
     private boolean isWeighted;
     private boolean isDirected;//pointing one way
-    private ArrayList<Vertex> visited = new ArrayList<>();//fix this later
+    
 
     //constructor
     public Graph(boolean inputIsWeighted, boolean inputIsDirected) {
@@ -78,10 +79,40 @@ public class Graph {
         }
     }
 
-    
+    //hel[er method to chose which station from user input
+    public Vertex chooseStation(Scanner input) {
+        System.out.println("Please choose a station: ");
+        for (int i = 0; i < this.vertices.size(); i++) {
+            System.out.println((i + 1) + ". " + this.vertices.get(i).getData());
+        }
+        int choice = input.nextInt();
+        if (choice < 1 || choice > this.vertices.size()) {
+            System.out.println("Invalid choice. Please try again.");
+            chooseStation(input);
+        } else {
+            switch (choice) {
+                case 1: return this.vertices.get(0); //downtown
+                case 2: return this.vertices.get(1); //cordata
+                case 3: return this.vertices.get(2); //Sunset
+                case 4: return this.vertices.get(3); //Meridian
+                case 5: return this.vertices.get(4); //Bellis fair
+                case 6: return this.vertices.get(5); //Lummi
+                case 7: return this.vertices.get(6); //Fairhaven
+                case 8: return this.vertices.get(7); //Samish
+                case 9: return this.vertices.get(8); //Ferndale
+                case 10: return this.vertices.get(9); //Barkley
+            
+                default: return null;
+            }
+        }
+        return null;
+
+    }
+
     //bfs method
     public void breathFirstSearch(Vertex start) {
         Queue<Vertex> bfsQueue = new LinkedList<>(); 
+        ArrayList<Vertex> visited = new ArrayList<>();//fix this later
         bfsQueue.add(start); //add the starting vertex to the queue
         visited.add(start); //add the starting vertex to the visited list
 
