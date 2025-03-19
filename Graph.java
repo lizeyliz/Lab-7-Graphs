@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class Graph {
     //instance variables
     private ArrayList<Vertex> vertices;
     private boolean isWeighted;
     private boolean isDirected;//pointing one way
-    private Vertex[] visited;//fix this later
+    private ArrayList<Vertex> visited = new ArrayList<>();//fix this later
 
     //constructor
     public Graph(boolean inputIsWeighted, boolean inputIsDirected) {
@@ -75,7 +77,38 @@ public class Graph {
             v.print(isWeighted);//calling print method from vertex class
         }
     }
+
+    
+    //bfs method
+    public void breathFirstSearch(Vertex start) {
+        Queue<Vertex> bfsQueue = new LinkedList<>(); 
+        bfsQueue.add(start); //add the starting vertex to the queue
+        visited.add(start); //add the starting vertex to the visited list
+
+        System.out.println("BFS: ");
+        System.out.println(start.getData()); //print the data of the starting vertex
+
+        while(!bfsQueue.isEmpty()) { //while the queue is not empty
+            Vertex curr = bfsQueue.poll(); //retreives and removes the head element of a queue
+            
+            for(Edge e: curr.getEdges()){ //for each edge in the current vertex
+                Vertex neighbor = e.getEnd(); //returns the end vertex of the edge
+                if(!visited.contains(neighbor)) { //if the neighbor is not already visited
+                    visited.add(neighbor); //add it to the visited list
+                    bfsQueue.add(neighbor); //add it to the queue
+                    System.out.println(neighbor.getData()); //print the data of the current vertex
+                }
+            }
+
+        }
+        visited.clear(); //clear the visited list for the next search
+
+
+    }
 	
 }
+    
+	
+
     
 

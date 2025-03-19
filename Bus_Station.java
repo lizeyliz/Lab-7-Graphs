@@ -37,6 +37,8 @@ public class Bus_Station {
         //print out graph
         System.out.println("Bus Network:");
         busNetwork.print();
+
+        busNetwork.breathFirstSearch(BarkleyStation);
     }
 
     
