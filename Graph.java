@@ -91,26 +91,25 @@ public class Graph {
             System.out.println("Invalid choice. Please try again.");
             chooseStation(input);
         } else {
-            switch (choice) {
-                case 1: return this.vertices.get(0); //downtown
-                case 2: return this.vertices.get(1); //cordata
-                case 3: return this.vertices.get(2); //Sunset
-                case 4: return this.vertices.get(3); //Meridian
-                case 5: return this.vertices.get(4); //Bellis fair
-                case 6: return this.vertices.get(5); //Lummi
-                case 7: return this.vertices.get(6); //Fairhaven
-                case 8: return this.vertices.get(7); //Samish
-                case 9: return this.vertices.get(8); //Ferndale
-                case 10: return this.vertices.get(9); //Barkley
-            
-                default: return null;
-            }
+            return switch (choice) {
+                case 1 -> this.vertices.get(0); //downtown
+                case 2 -> this.vertices.get(1); //cordata
+                case 3 -> this.vertices.get(2); //Sunset
+                case 4 -> this.vertices.get(3); //Meridian
+                case 5 -> this.vertices.get(4); //Bellis fair
+                case 6 -> this.vertices.get(5); //Lummi
+                case 7 -> this.vertices.get(6); //Fairhaven
+                case 8 -> this.vertices.get(7); //Samish
+                case 9 -> this.vertices.get(8); //Ferndale
+                case 10 -> this.vertices.get(9); //Barkley
+                default -> null;
+            };
         }
         return null;
 
     }
 
-    //depth first search: takes in start vertex and array to hold the DFS order: NEED TO CHECK
+    //depth first search: takes in start vertex
     public void depthFirstSearch(Vertex start) {
         ArrayList<Vertex> DFS = new ArrayList<>();//holds depth first search
         Stack<Vertex> stack = new Stack<Vertex>();//stack so we can backtrack (imitates recursion)
@@ -168,9 +167,30 @@ public class Graph {
         visited.clear(); //clear the visited list for the next search
 
 
-    }
-	
-}
+    }//end breadthFirstSearch
+
+    public void userMenu(Scanner scan){
+        while(true){
+            System.out.println("1) Print Depth First Search");
+            System.out.println("2) Print Breadth First Search");
+            System.out.println("3) Exit program");
+
+            int choice = scan.nextInt();
+
+            switch(choice){
+                case 1 -> {//depth first search
+                    Vertex station = chooseStation(scan); //user choses which station to start the search from
+                    depthFirstSearch(station);//do a depth first search
+                }
+                case 2 -> {//breadth first search
+                    Vertex station = chooseStation(scan); //user choses which station to start the search from
+                    breadthFirstSearch(station);
+                }
+                case 3 -> {System.exit(0);}//exit the program
+            }//end switch/choice
+        }//end while loop
+    }//end userMenu
+}//end Graph class
     
 	
 
