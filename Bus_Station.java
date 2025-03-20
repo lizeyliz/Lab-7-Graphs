@@ -43,39 +43,5 @@ public class Bus_Station {
 
     
     }
-
-    //user menu
-    public void userMenu(Scanner input){
-        System.out.println("Welcome to the Bus Station menu!");
-        System.out.println("Please select an option:");
-        System.out.println("1. BFS Algorithm");
-        System.out.println("2. DFS Algorithm");
-        System.out.println("3. Dijkstra's Algorithm");
-
-        int choice = input.nextInt();
-        switch (choice) {
-            case 1:
-                Vertex g = busNetwork.chooseStation(input);
-                busNetwork.breadthFirstSearch(g);
-            
-                break;
-            case 2:
-                System.out.println("You selected DFS Algorithm");
-                break;
-            case 3:
-                System.out.println("You selected Dijkstra's Algorithm");
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
-        }
-
-    }
-
-    
-    
-
-    
-
-    
     
 }
