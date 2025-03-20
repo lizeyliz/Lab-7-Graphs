@@ -110,7 +110,7 @@ public class Graph {
     }
 
     //bfs method
-    public void breathFirstSearch(Vertex start) {
+    public void breadthFirstSearch(Vertex start) {
         Queue<Vertex> bfsQueue = new LinkedList<>(); 
         ArrayList<Vertex> visited = new ArrayList<>();//fix this later
         bfsQueue.add(start); //add the starting vertex to the queue
