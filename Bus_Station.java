@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Scanner;
 
 public class Bus_Station {
     Scanner input = new Scanner(System.in);
@@ -57,7 +56,7 @@ public class Bus_Station {
         switch (choice) {
             case 1:
                 Vertex g = busNetwork.chooseStation(input);
-                busNetwork.breathFirstSearch(g);
+                busNetwork.breadthFirstSearch(g);
             
                 break;
             case 2:

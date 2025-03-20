@@ -1,7 +1,12 @@
+import java.lang.classfile.ClassFile;
 import java.util.Stack;
 import java.util.ArrayList;
+import java.util.Scanner;
 public class AlizaMethods {
     Graph graph = new Graph(true, false);
+    Bus_Station station = new Bus_Station();
+    Scanner scan = new Scanner(System.in);
+
 
 
     //depth first search: takes in start vertex and array to hold the DFS order
@@ -17,7 +22,7 @@ public class AlizaMethods {
         //while stack not empty
         while (!stack.isEmpty()) {
             Vertex curr = stack.pop();//visit current node
-            DFS.add(curr); //add it to DFS ARRAYLIST
+            DFS.add(curr);//add it to DFS ARRAYLIST
             
             //push unvisited adjacent vertices to stack
             for(Edge e: curr.getEdges()){ //for each edge connected to the current vertex
